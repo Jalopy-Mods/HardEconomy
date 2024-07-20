@@ -1,4 +1,4 @@
-# LaikaAddons
+# HardEconomy
 
 [![](https://img.shields.io/github/downloads/Jalopy-Mods/HardEconomy/total)](#)
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/A0A8OGPIQ)
