@@ -18,7 +18,7 @@ namespace HardEconomy
         public override string ModName => "Hard Economy";
         public override string ModAuthor => "Leaxx";
         public override string ModDescription => "Requires you to be wise with your expenses!";
-        public override string ModVersion => "1.0";
+        public override string ModVersion => "1.1";
         public override string GitHubLink => "https://github.com/Jalopy-Mods/HardEconomy";
         public override WhenToInit WhenToInit => WhenToInit.InGame;
         public override List<(string, string, string)> Dependencies => new List<(string, string, string)>()
@@ -43,6 +43,9 @@ namespace HardEconomy
 
         private void OnRouteGenerated(string a, string b, int c)
         {
+            if (!gameObject.activeSelf)
+                return;
+
             Invoke("MakeEverythingHarder", 10);
         }
 
@@ -90,13 +93,16 @@ namespace HardEconomy
 
         private void Prepare()
         {
-            foreach (ModsPageItem script in FindObjectsOfTypeAll(typeof(ModsPageItem)))
+            foreach (ModsPageItem script in FindObjectsOfType(typeof(ModsPageItem)))
                 if(script.itemName != null && script.itemName != "")
                     script.LoadData();
         }
 
         private void MakeEverythingHarder()
         {
+            if (!gameObject.activeSelf)
+                return;
+
             float changeBuyValue = Random.Range(1f, 2.5f);
             float changeSellValue = Random.Range(0.5f, 1f);
 
@@ -122,7 +128,7 @@ namespace HardEconomy
                 }
             }
 
-            foreach(ModsPageItem script in FindObjectsOfTypeAll(typeof(ModsPageItem)))
+            foreach(ModsPageItem script in FindObjectsOfType(typeof(ModsPageItem)))
             {
                 if (script.itemName == null || script.itemName == "")
                     continue;
